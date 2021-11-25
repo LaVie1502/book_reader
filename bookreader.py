@@ -6,13 +6,13 @@ print("Skopiuj ścieżkę do pliku który chcesz odsłuchać\n"
       "sciezka:", end=' ')
 while True:
     try:
-        k = input()
-        for i in k:
+        b = input()
+        for i in b:
             if i == "\/":
                 i == "\\"
 
-        ksiazka = open(k, 'rb')
-        czyt_pdf = PyPDF2.PdfFileReader(ksiazka)
+        book = open(b, 'rb')
+        read_pdf = PyPDF2.PdfFileReader(book)
         break
 
     except OSError:
@@ -20,18 +20,18 @@ while True:
               'Spróbuj ponownie:', end=' ')
 
 print("Podaj numer stronu od ktorej chcesz zacząć czytanie:", end=' ')
-numer = int(input())
-od_strony = czyt_pdf.getPage(numer)
-tekst = od_strony.extractText()
+number = int(input())
+from_page = read_pdf.getPage(number)
+text = from_page.extractText()
 
 print("Podaj predkosc odtwarzania:  \n"
       "50 - 0.5x \n"
       "100 - normalna \n"
       "200 - 2x\n"
       "Predkosc:", end=' ')
-Predkosc = input()
-glos = pyttsx3.init()
-glos.setProperty("rate", int(Predkosc))
+speed = input()
+voice = pyttsx3.init()
+voice.setProperty("rate", int(speed))
 
 print("wybierz język:\n"
       "1: polski \n"
@@ -59,6 +59,6 @@ while True:
         j = input()
         i = int(j)
 
-glos.setProperty('voice', voice_id)
-glos.say(tekst)
-glos.runAndWait()
+voice.setProperty('voice', voice_id)
+voice.say(text)
+voice.runAndWait()
