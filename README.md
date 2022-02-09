@@ -1,2 +1,1 @@
-# lektor
-prosty program do czytania ksiazek 
+Book reader - simple program to read books from PDF files
